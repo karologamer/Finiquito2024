@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAM Ambulancia Finiquito 2024</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --secondary: #718096;
+            --background: #f7fafc;
+            --text: #2d3748;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background-image: url('https://i.ibb.co/2Fh85Yq/1727275510636.png');
+            background-repeat: repeat;
+            padding: 1rem;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background: var(--primary-light);
+        }
+
+        .results {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+            display: none;
+        }
+
+        .results.visible {
+            display: block;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.5rem;
+        }
+
+        .results-grid p {
+            padding: 0.5rem;
+        }
+
+        .results-grid p:nth-child(4n+1),
+        .results-grid p:nth-child(4n+2) {
+            background: var(--background);
+        }
+
+        .total {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1em;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .social-button:hover {
+            transform: scale(1.1);
+        }
+
+        .social-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.ibb.co/4K0GRSP/IMG-20240925-132533.jpg" alt="CCOO Ambulancias Madrid" class="logo">
+        <h1>CAM Ambulancia Finiquito 2024</h1>
+        <form id="finiquitoForm">
+            <div class="grid">
+                <div class="form-group">
+                    <label for="puesto">Puesto de Trabajo</label>
+                    <select id="puesto" required>
+                        <option value="">Seleccione un puesto</option>
+                        <option value="2281.37">Director/a de área</option>
+                        <option value="1939.31">Diplomado/a</option>
+                        <option value="2100.00">Técnico superior</option>
+                        <option value="1939.31">Técnico medio</option>
+                        <option value="1521.89">Jefe/a de equipo</option>
+                        <option value="1636.68">Jefe/a de tráfico</option>
+                        <option value="1578.79">Jefe/a de taller</option>
+                        <option value="1605.41">Oficial administrativo</option>
+                        <option value="1407.16">Auxiliar administrativo</option>
+                        <option value="1472.68">Coordinador/a de respuesta</option>
+                        <option value="1417.53">Teleoperador/a de demanda</option>
+                        <option value="952.35">Ordenanza</option>
+                        <option value="1939.31">Analista de proceso de datos</option>
+                        <option value="1605.41">Programador/a</option>
+                        <option value="2481.90">Médico/a</option>
+                        <option value="1939.31">DUE (antes ATS)</option>
+                        <option value="1545.64">TES conductor/a</option>
+                        <option value="1383.39">TES Ayudante conductor/a</option>
+                        <option value="1316.98">TES camillero/a</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="diasFestivos">Días Festivos no Disfrutados</label>
+                    <input type="number" id="diasFestivos" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="vacacionesDisfrutadas">¿Has disfrutado de todas tus vacaciones?</label>
+                    <select id="vacacionesDisfrutadas">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group" id="diasVacacionesPendientesGroup" style="display: none;">
+                    <label for="diasVacacionesPendientes">Días de vacaciones pendientes</label>
+                    <input type="number" id="diasVacacionesPendientes" min="0" max="30" value="0">
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="fechaInicio">Fecha de Inicio del Contrato</label>
+                    <input type="date" id="fechaInicio" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaFin">Fecha de Fin del Contrato</label>
+                    <input type="date" id="fechaFin" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cobroNominaAnterior">¿Has cobrado la nómina del mes anterior?</label>
+                <select id="cobroNominaAnterior">
+                    <option value="no" selected>No</option>
+                    <option value="si">Sí</option>
+                </select>
+            </div>
+
+            <button type="submit">Calcular Finiquito</button>
+        </form>
+
+        <div id="results" class="results">
+            <h2>Resultados del Finiquito</h2>
+            <div class="results-grid" id="resultsGrid"></div>
+        </div>
+
+        <div class="social-buttons">
+            <a href="https://whatsapp.com/channel/0029VawlpviEawdySfyY6p31" target="_blank" class="social-button">
+                <img src="https://cdn.icon-icons.com/icons2/2429/PNG/512/whatsapp_logo_icon_147205.png" alt="WhatsApp">
+            </a>
+            <a href="https://www.instagram.com/ccooambulanciasmadrid?igsh=MXQ0ZWIwaTFrOGI2NA==" target="_blank" class="social-button">
+                <img src="https://cdn.icon-icons.com/icons2/1211/PNG/512/1491580635-yumminkysocialmedia26_83102.png" alt="Instagram">
+            </a>
+            <a href="https://t.me/+ZfUWc84R_ww5NTk0" target="_blank" class="social-button">
+                <img src="https://cdn.icon-icons.com/icons2/923/PNG/256/telegram_icon-icons.com_72055.png" alt="Telegram">
+            </a>
+            <a href="https://www.bocm.es/bocm-20220228-23" target="_blank" class="social-button">
+                <img src="https://cdn.icon-icons.com/icons2/603/PNG/512/legal_law_justice_balance_court_judge_icon-icons.com_55992.png" alt="Legal">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const PLUS = {
+            transporte: 90.52,
+            convenio: 181.27
+        };
+
+        function calcularAntiguedad(salarioBase, anosAntiguedad) {
+            let porcentaje = 0;
+            if (anosAntiguedad >= 3) {
+                porcentaje = 3 + Math.min(anosAntiguedad - 3, 17);
+            }
+            porcentaje = Math.min(porcentaje, 20);
+            return salarioBase * (porcentaje / 100);
+        }
+
+        document.getElementById('vacacionesDisfrutadas').addEventListener('change', function() {
+            document.getElementById('diasVacacionesPendientesGroup').style.display = 
+                this.value === 'no' ? 'block' : 'none';
+        });
+
+        document.getElementById('finiquitoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const salarioBase = parseFloat(document.getElementById('puesto').value);
+            const diasFestivos = parseInt(document.getElementById('diasFestivos').value);
+            const cobroNominaAnterior = document.getElementById('cobroNominaAnterior').value === 'si';
+            const vacacionesDisfrutadas = document.getElementById('vacacionesDisfrutadas').value === 'si';
+            const diasVacacionesPendientes = vacacionesDisfrutadas ? 0 : parseInt(document.getElementById('diasVacacionesPendientes').value);
+            
+            const fechaInicio = new Date(document.getElementById('fechaInicio').value);
+            const fechaFin = new Date(document.getElementById('fechaFin').value);
+            
+            // Calcular años de antigüedad
+            const anosAntiguedad = fechaFin.getFullYear() - fechaInicio.getFullYear();
+            
+            // Cálculos base
+            const antiguedad = calcularAntiguedad(salarioBase, anosAntiguedad);
+            const complementos = PLUS.transporte + PLUS.convenio;
+            const nominaTotal = salarioBase + complementos + antiguedad;
+            
+            // Base para pagas extras (sin plus de transporte)
+            const basePagasExtras = salarioBase + PLUS.convenio + antiguedad;
+            
+            // Cálculo de la nómina del mes actual
+            const diasEnMesActual = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0).getDate();
+            const proporcionMesActual = fechaFin.getDate() / diasEnMesActual;
+            const nominaMesActual = cobroNominaAnterior ? 0 : nominaTotal * proporcionMesActual;
+            
+            // Cálculo de pagas extras (sin plus de transporte)
+            const pagaExtra = basePagasExtras;
+            
+            // Paga de Marzo (1 de enero a 31 de diciembre)
+            const proporcionPagaMarzo = (Math.min(fechaFin, new Date(fechaFin.getFullYear(), 11, 31)) - Math.max(fechaInicio, new Date(fechaFin.getFullYear(), 0, 1))) / (365 * 24 * 60 * 60 * 1000);
+            const pagaMarzo = pagaExtra * proporcionPagaMarzo;
+            
+            // Paga de Julio (1 de julio del año actual a 31 de mayo del año siguiente)
+            const inicioJulio = new Date(fechaFin.getFullYear(), 6, 1);
+            const finMayo = new Date(fechaFin.getFullYear() + 1, 4, 31);
+            const proporcionPagaJulio = (Math.min(fechaFin, finMayo) - Math.max(fechaInicio, inicioJulio)) / (335 * 24 * 60 * 60 * 1000);
+            const pagaJulio = pagaExtra * proporcionPagaJulio;
+            
+            // Paga de Diciembre (1 de diciembre del año anterior al 30 de noviembre del año actual)
+            const inicioDiciembre = new Date(fechaFin.getFullYear() - 1, 11, 1);
+            const finNoviembre = new Date(fechaFin.getFullYear(), 10, 30);
+            const proporcionPagaDiciembre = (Math.min(fechaFin, finNoviembre) - Math.max(fechaInicio, inicioDiciembre)) / (365 * 24 * 60 * 60 * 1000);
+            const pagaDiciembre = pagaExtra * proporcionPagaDiciembre;
+            
+            // Cálculo de festivos no disfrutados
+            const festivosNoDisfrutados = (nominaTotal / 30) * diasFestivos;
+            
+            // Cálculo de vacaciones
+            const diasVacacionesAnuales = 30;
+            const diasVacacionesPorMes = diasVacacionesAnuales / 12;
+            const mesesTrabajadosEsteAno = (fechaFin - new Date(fechaFin.getFullYear(), 0, 1)) / (1000 * 60 * 60 * 24 * 30.44);
+            const diasVacacionesCorrespondientes = diasVacacionesPorMes * mesesTrabajadosEsteAno;
+            let importeVacaciones = 0;
+
+            if (vacacionesDisfrutadas) {
+                // Si ha disfrutado todas las vacaciones, se restan 2.5 días
+                importeVacaciones = -((nominaTotal / 30) * 2.5);
+            } else {
+                // Si no ha disfrutado todas las vacaciones, se suman los días pendientes
+                importeVacaciones = (nominaTotal / 30) * diasVacacionesPendientes;
+            }
+            
+            // Total finiquito
+            const totalFiniquito = nominaMesActual + pagaMarzo + pagaJulio + pagaDiciembre + 
+                                   festivosNoDisfrutados + importeVacaciones;
+            
+            // Mostrar resultados
+            const resultados = [
+                ['Nómina Mes Actual', nominaMesActual],
+                ['Paga Extra Marzo', pagaMarzo],
+                ['Paga Extra Julio', pagaJulio],
+                ['Paga Extra Diciembre', pagaDiciembre],
+                ['Festivos no Disfrutados', festivosNoDisfrutados],
+                ['Vacaciones', importeVacaciones],
+                ['Total Finiquito (€/Bruto estimado)', totalFiniquito]
+            ];
+            
+            const resultsGrid = document.getElementById('resultsGrid');
+            resultsGrid.innerHTML = resultados
+                .map(([concepto, valor]) => `
+                    <p>${concepto}</p>
+                    <p class="${concepto.includes('Total Finiquito') ? 'total' : ''}">${valor.toFixed(2)}€</p>
+                `)
+                .join('');
+            
+            document.getElementById('results').classList.add('visible');
+        });
+    </script>
+</body>
+</html>
