@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAM Ambulancia Finiquito 2024</title>
     <style>
+        /* Los estilos permanecen sin cambios */
         :root {
             --primary: #1a365d;
             --primary-light: #2c5282;
@@ -283,7 +284,6 @@
 
         function calcularVacaciones(salarioBase, plusConvenio, antiguedad, diasVacaciones, fechaFin, vacacionesDisfrutadas) {
             const salarioDiario = (salarioBase + plusConvenio + antiguedad) / 30;
-            const diasVacacionesAnuales = 30; // Asumimos 30 días de vacaciones al año
             
             if (vacacionesDisfrutadas === 'si') {
                 const fechaFinAño = new Date(fechaFin.getFullYear(), 11, 31); // 31 de diciembre del año de finalización
@@ -294,6 +294,11 @@
             } else {
                 return salarioDiario * diasVacaciones; // Valor positivo para sumar al finiquito
             }
+        }
+
+        function calcularFestivos(salarioBase, plusConvenio, antiguedad, plusTransporte, diasFestivos) {
+            const salarioDiario = (salarioBase + plusConvenio + antiguedad + plusTransporte) / 30;
+            return salarioDiario * diasFestivos;
         }
 
         document.getElementById('vacacionesDisfrutadas').addEventListener('change', function() {
@@ -319,7 +324,8 @@
             
             // Cálculos base
             const esMesEspecial = PLUS.mesesSinTransporte.includes(new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(fechaFin).toLowerCase());
-            const complementos = esMesEspecial ? PLUS.convenio : PLUS.transporte + PLUS.convenio;
+            const plusTransporte = esMesEspecial ? 0 : PLUS.transporte;
+            const complementos = PLUS.convenio + plusTransporte;
             const nominaTotal = salarioBase + complementos + antiguedad;
             
             // Cálculo de la nómina del mes actual
@@ -341,16 +347,18 @@
             const proporcionPagaJulio = (Math.min(fechaFin, finJunio) - Math.max(fechaInicio, inicioJulio)) / (365 * 24 * 60 * 60 * 1000);
             const pagaJulio = (salarioBase + PLUS.convenio + antiguedad) * proporcionPagaJulio;
 
-            // Paga de Diciembre (1 de diciembre del año anterior al 30 de noviembre del año actual)
-            const inicioDiciembre = new Date(fechaFin.getFullYear() - 1, 11, 1);
-            const finNoviembre = new Date(fechaFin.getFullYear(), 10, 30);
-            const proporcionPagaDiciembre = (Math.min(fechaFin, finNoviembre) - Math.max(fechaInicio, inicioDiciembre)) / (365 * 24 * 60 * 60 * 1000);
+            // Paga de Diciembre (1 de enero al último día del mes de finalización del contrato del año actual)
+            const inicioDiciembre = new Date(fechaFin.getFullYear(), 0, 1);
+            const finDiciembre = new Date(fechaFin.getFullYear(), fechaFin.getMonth(), fechaFin.getDate());
+            const mesesTrabajadosDiciembre = (finDiciembre.getMonth() - inicioDiciembre.getMonth() + 
+                (finDiciembre.getFullYear() - inicioDiciembre.getFullYear()) * 12) + 1;
+            const proporcionPagaDiciembre = mesesTrabajadosDiciembre / 12;
             const pagaDiciembre = (salarioBase + PLUS.convenio + antiguedad) * proporcionPagaDiciembre;
             
             // Cálculo de festivos no disfrutados
-            const festivosNoDisfrutados = (nominaTotal / 30) * diasFestivos;
+            const festivosNoDisfrutados = calcularFestivos(salarioBase, PLUS.convenio, antiguedad, plusTransporte, diasFestivos);
             
-            // Cálculo de vacaciones (nueva fórmula)
+            // Cálculo de vacaciones
             const importeVacaciones = calcularVacaciones(salarioBase, PLUS.convenio, antiguedad, diasVacaciones, fechaFin, vacacionesDisfrutadas);
             
             // Total finiquito
@@ -381,3 +389,4 @@
     </script>
 </body>
 </html>
+
