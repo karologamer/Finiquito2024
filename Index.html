@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAM Ambulancia Finiquito 2024</title>
+    <title>FINIQUITO 2024</title>
     <style>
-        /* Los estilos permanecen sin cambios */
+        /* Estilos base */
         :root {
             --primary: #1a365d;
             --primary-light: #2c5282;
@@ -21,6 +21,17 @@
             box-sizing: border-box;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.5;
@@ -28,15 +39,18 @@
             background-image: url('https://i.ibb.co/2Fh85Yq/1727275510636.png');
             background-repeat: repeat;
             padding: 1rem;
+            animation: fadeIn 1s ease-out;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 1.2s ease-out;
         }
 
         .logo {
@@ -44,6 +58,7 @@
             max-width: 600px;
             margin: 0 auto 1rem;
             display: block;
+            animation: fadeIn 1.5s ease-out;
         }
 
         h1 {
@@ -51,10 +66,12 @@
             margin-bottom: 1.5rem;
             text-align: center;
             font-size: clamp(1.5rem, 5vw, 2.5rem);
+            animation: fadeIn 1.8s ease-out;
         }
 
         .form-group {
             margin-bottom: 1rem;
+            animation: fadeIn 2s ease-out;
         }
 
         label {
@@ -69,6 +86,13 @@
             border: 1px solid var(--border);
             border-radius: 4px;
             font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.2);
         }
 
         .grid {
@@ -87,10 +111,13 @@
             width: 100%;
             font-size: 1rem;
             margin-top: 1rem;
+            transition: background 0.3s, transform 0.2s;
+            animation: fadeIn 2.2s ease-out;
         }
 
         button:hover {
             background: var(--primary-light);
+            animation: pulse 1s infinite;
         }
 
         .results {
@@ -98,6 +125,7 @@
             padding-top: 2rem;
             border-top: 2px solid var(--border);
             display: none;
+            animation: fadeIn 0.5s ease-out;
         }
 
         .results.visible {
@@ -112,11 +140,12 @@
 
         .results-grid p {
             padding: 0.5rem;
+            transition: background-color 0.3s;
         }
 
         .results-grid p:nth-child(4n+1),
         .results-grid p:nth-child(4n+2) {
-            background: var(--background);
+            background: rgba(247, 250, 252, 0.7);
         }
 
         .total {
@@ -130,34 +159,7 @@
             text-align: center;
             font-size: 0.9rem;
             color: var(--secondary);
-        }
-
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-button {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .social-button:hover {
-            transform: scale(1.1);
-        }
-
-        .social-button img {
-            width: 30px;
-            height: 30px;
+            animation: fadeIn 2.5s ease-out;
         }
 
         @media (max-width: 600px) {
@@ -169,8 +171,8 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://i.ibb.co/4K0GRSP/IMG-20240925-132533.jpg" alt="CCOO Ambulancias Madrid" class="logo">
-        <h1>CAM Ambulancia Finiquito 2024</h1>
+        <img src="https://i.ibb.co/4K0GRSP/IMG-20240925-132533.jpg" alt="Logo" class="logo">
+        <h1>FINIQUITO 2024</h1>
         <form id="finiquitoForm">
             <div class="grid">
                 <div class="form-group">
@@ -246,23 +248,7 @@
 
         <div class="disclaimer">
             <p><small>Este cálculo es una estimación aproximada para poder conocer su finiquito.</small></p>
-            <p><small>Para obtener un cálculo 100%, póngase en contacto con su delegado de CCOO.</small></p>
-            <p><b><H1></big>UNETE Y SIGUENOS<H1/></big></b></p>
-            <p><b>CCOO Tenorio e Hijos SL</b></p>
-        </div>
-        <div class="social-buttons">
-            <a href="https://whatsapp.com/channel/0029VawlpviEawdySfyY6p31" target="_blank" class="social-button">
-                <img src="https://cdn.icon-icons.com/icons2/2429/PNG/512/whatsapp_logo_icon_147205.png" alt="WhatsApp">
-            </a>
-            <a href="https://www.instagram.com/ccooambulanciasmadrid?igsh=MXQ0ZWIwaTFrOGI2NA==" target="_blank" class="social-button">
-                <img src="https://cdn.icon-icons.com/icons2/1211/PNG/512/1491580635-yumminkysocialmedia26_83102.png" alt="Instagram">
-            </a>
-            <a href="https://t.me/+ZfUWc84R_ww5NTk0" target="_blank" class="social-button">
-                <img src="https://cdn.icon-icons.com/icons2/923/PNG/256/telegram_icon-icons.com_72055.png" alt="Telegram">
-            </a>
-            <a href="https://www.bocm.es/bocm-20220228-23" target="_blank" class="social-button">
-                <img src="https://cdn.icon-icons.com/icons2/603/PNG/512/legal_law_justice_balance_court_judge_icon-icons.com_55992.png" alt="Legal">
-            </a>
+            <p><small>Para obtener un cálculo 100%, póngase en contacto con su delegado.</small></p>
         </div>
     </div>
 
@@ -365,28 +351,32 @@
             const totalFiniquito = nominaMesActual + pagaMarzo + pagaJulio + pagaDiciembre + 
                                    festivosNoDisfrutados + importeVacaciones;
             
-            // Mostrar resultados
-            const resultados = [
-                ['Nómina Mes Actual', nominaMesActual],
-                ['Paga Extra Marzo', pagaMarzo],
-                ['Paga Extra Julio', pagaJulio],
-                ['Paga Extra Diciembre', pagaDiciembre],
-                ['Festivos no Disfrutados', festivosNoDisfrutados],
-                ['Vacaciones', importeVacaciones],
-                ['Total Finiquito (€/Bruto estimado)', totalFiniquito]
-            ];
+            // Mostrar resultados con animación
+            const resultsElement = document.getElementById('results');
+            resultsElement.classList.remove('visible');
             
-            const resultsGrid = document.getElementById('resultsGrid');
-            resultsGrid.innerHTML = resultados
-                .map(([concepto, valor]) => `
-                    <p>${concepto}</p>
-                    <p class="${concepto.includes('Total Finiquito') ? 'total' : ''}">${valor.toFixed(2)}€</p>
-                `)
-                .join('');
-            
-            document.getElementById('results').classList.add('visible');
+            setTimeout(() => {
+                const resultados = [
+                    ['Nómina Mes Actual', nominaMesActual],
+                    ['Paga Extra Marzo', pagaMarzo],
+                    ['Paga Extra Julio', pagaJulio],
+                    ['Paga Extra Diciembre', pagaDiciembre],
+                    ['Festivos no Disfrutados', festivosNoDisfrutados],
+                    ['Vacaciones', importeVacaciones],
+                    ['Total Finiquito (€/Bruto estimado)', totalFiniquito]
+                ];
+                
+                const resultsGrid = document.getElementById('resultsGrid');
+                resultsGrid.innerHTML = resultados
+                    .map(([concepto, valor]) => `
+                        <p>${concepto}</p>
+                        <p class="${concepto.includes('Total Finiquito') ? 'total' : ''}">${valor.toFixed(2)}€</p>
+                    `)
+                    .join('');
+                
+                resultsElement.classList.add('visible');
+            }, 300);
         });
     </script>
 </body>
 </html>
-
